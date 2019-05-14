@@ -25,15 +25,45 @@ window.addEventListener("DOMContentLoaded", function() {
     })
   })
 
-  // reload the page when user clicks the logo;
+  // reload the page when user double-clicks the logo;
   const logoHeading = document.querySelector('.logo-heading');
   logoHeading.addEventListener('mouseover', function () {
     this.style.cursor = 'pointer';
   });
 
-  logoHeading.addEventListener('click', () => {
+  logoHeading.addEventListener('dblclick', () => {
     location.reload();
   });
 
-  logoHeading.addEventListener('focus', () => console.log('focussing'))
+  // bring the form into focus by clicking the buttons
+  const signUpButton = document.querySelectorAll('.btn');
+  signUpButton.forEach((btn, i) => {
+    btn.addEventListener('click', () => {
+      document.querySelector(`.hidden-${i}`).classList.toggle('hidden');
+    })
+  })
+
+  // change the input border to red on focus
+  const input = document.querySelectorAll('input[type="text"]')
+  input.forEach(item => {
+    item.addEventListener('focus', function() {
+      item.style.border = '2px solid red';
+    })
+  })
+
+  // get the user input
+  // let userInput = '';
+  // input.forEach(item => {
+  //   item.addEventListener('change', (event) => {
+  //     userInput += event.target.value;
+  //   })
+  // })
+
+  // hide form on submit
+  const form = document.querySelectorAll('form');
+  form.forEach((item, i) => {
+    item.addEventListener('submit', () => {
+      document.querySelector(`.hidden-${i}`).classList.toggle('hidden');
+    })
+  })
 });
