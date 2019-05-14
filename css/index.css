@@ -202,6 +202,10 @@ form button:hover {
 .hidden {
   display: none;
 }
+.animate:hover {
+  transform: scale(1.05);
+  transition: all 0.5s;
+}
 .main-navigation {
   width: 100%;
   height: 90px;
