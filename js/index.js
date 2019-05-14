@@ -50,16 +50,19 @@ window.addEventListener("load", function() {
   // change the input border to red on focus
   const input = document.querySelectorAll('input[type="text"]');
   input.forEach(item => {
-    item.addEventListener("focus", function() {
+    item.addEventListener("focus", () => {
       item.style.border = "2px solid red";
     });
+
+    item.addEventListener("click", event => event.stopPropagation());
   });
 
   // hide form on submit
   const form = document.querySelectorAll("form");
   form.forEach((item, i) => {
-    item.addEventListener("submit", () => {
+    item.addEventListener("submit", (event) => {
       document.querySelector(`.hidden-${i}`).classList.toggle("hidden");
+      event.preventDefault();
     });
   });
 
@@ -78,4 +81,8 @@ window.addEventListener("load", function() {
       location.reload();
     });
   });
+
+  // green sock shake animation for the header logo
+  TweenMax.to(logoHeading, 0.1, { x: "+=20", yoyo: true, repeat: 15 });
+  TweenMax.to(logoHeading, 0.1, { x: "-=20", yoyo: true, repeat: 15 });
 });
