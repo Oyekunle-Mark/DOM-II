@@ -213,6 +213,7 @@ form button:hover {
   background: #FFFFFF;
   border-bottom: 2px dashed #C0C0C0;
   position: fixed;
+  z-index: 2;
 }
 .main-navigation .nav-container {
   height: 100%;
